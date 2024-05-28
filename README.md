@@ -29,3 +29,10 @@ npm install @strapi/plugin-documentation --save
 ```
 
 - http://localhost:1337/documentation
+
+```sh
+docker-compose -p "nextshop" up -d
+docker exec -it nextshop_mysql sh
+mysqldump --user=root --password=123456 nextshop_mysql > "/var/dumps/nextshop_mysql_dump_$(date +%Y%m%d%H%M%S).sql"
+mysql -u root -p 123456 nextshop_mysql < /var/dumps/nextshop_mysql_dump_20240528103452.sql
+```

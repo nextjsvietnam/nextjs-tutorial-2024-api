@@ -16,6 +16,7 @@
     "@strapi/plugin-i18n": "4.24.3",
     "@strapi/plugin-users-permissions": "4.24.3",
     "@strapi/strapi": "4.24.3",
+    "dotenv": "^16.4.5",
     "mysql": "2.18.1",
     "mysql2": "^3.9.8",
     "react": "^18.0.0",
