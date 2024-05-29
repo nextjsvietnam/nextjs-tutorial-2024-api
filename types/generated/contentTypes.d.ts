@@ -362,12 +362,12 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiProductProduct extends Schema.SingleType {
-  collectionName: 'products';
+export interface ApiHomePageHomePage extends Schema.SingleType {
+  collectionName: 'home_pages';
   info: {
-    singularName: 'product';
-    pluralName: 'products';
-    displayName: 'Product';
+    singularName: 'home-page';
+    pluralName: 'home-pages';
+    displayName: 'HomePage';
     description: '';
   };
   options: {
@@ -375,28 +375,19 @@ export interface ApiProductProduct extends Schema.SingleType {
   };
   attributes: {
     Title: Attribute.String;
-    Price: Attribute.Integer;
-    Image: Attribute.Media;
-    detail: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor.CKEditor',
-        {
-          output: 'HTML';
-          preset: 'rich';
-        }
-      >;
-    description: Attribute.Text;
+    seo_meta: Attribute.Component<'seo.seo-meta'>;
+    main_hero_section: Attribute.Component<'layout.hero-section'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::product.product',
+      'api::home-page.home-page',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::product.product',
+      'api::home-page.home-page',
       'oneToOne',
       'admin::user'
     > &
@@ -840,7 +831,7 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::product.product': ApiProductProduct;
+      'api::home-page.home-page': ApiHomePageHomePage;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;

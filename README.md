@@ -21,6 +21,28 @@ npm install mysql2 --save
 DATABASE_CLIENT=mysql2
 ```
 
+### Content Type
+
+1. Collection Content Type
+
+- Your data type supports multiple instances
+- Examples: blog posts, company services, menu items
+
+2. Single Content Type
+
+- Your data type supports just a single instance
+- Examples: Home Page, Company Info, global configs
+
+### Relations
+
+Examples: A product can belong to multiple categories/tags, but only have one author.
+
+### Components
+
+- DRY : don't repeat yourself
+
+Examples: A SEO Component
+
 ### Plugins
 
 ```sh

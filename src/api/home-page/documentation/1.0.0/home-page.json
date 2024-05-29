@@ -1,5 +1,5 @@
 {
-  "/product": {
+  "/home-page": {
     "get": {
       "responses": {
         "200": {
@@ -7,7 +7,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ProductResponse"
+                "$ref": "#/components/schemas/HomePageResponse"
               }
             }
           }
@@ -64,7 +64,7 @@
         }
       },
       "tags": [
-        "Product"
+        "Home-page"
       ],
       "parameters": [
         {
@@ -169,7 +169,7 @@
           }
         }
       ],
-      "operationId": "get/product"
+      "operationId": "get/home-page"
     },
     "put": {
       "responses": {
@@ -178,7 +178,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ProductResponse"
+                "$ref": "#/components/schemas/HomePageResponse"
               }
             }
           }
@@ -235,16 +235,16 @@
         }
       },
       "tags": [
-        "Product"
+        "Home-page"
       ],
       "parameters": [],
-      "operationId": "put/product",
+      "operationId": "put/home-page",
       "requestBody": {
         "required": true,
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/ProductRequest"
+              "$ref": "#/components/schemas/HomePageRequest"
             }
           }
         }
@@ -315,10 +315,10 @@
         }
       },
       "tags": [
-        "Product"
+        "Home-page"
       ],
       "parameters": [],
-      "operationId": "delete/product"
+      "operationId": "delete/home-page"
     }
   }
 }
