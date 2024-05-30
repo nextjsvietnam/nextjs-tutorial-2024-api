@@ -128,3 +128,32 @@ export default [
   },
 ];
 ```
+
+2. Email with node-mailer
+
+```sh
+npm install @strapi/provider-email-nodemailer --save
+```
+
+```ts
+// ./config/plugins.ts
+  email: {
+    config: {
+      provider: 'nodemailer',
+      providerOptions: {
+        host: env('SMTP_HOST', 'localhost'),
+        port: env('SMTP_PORT', 587),
+        auth: {
+          user: env('SMTP_USER'),
+          pass: env('SMTP_PASS'),
+        },
+        ignoreTLS: true,
+        // ... any custom nodemailer options
+      },
+      settings: {
+        defaultFrom: 'hello@example.com',
+        defaultReplyTo: 'hello@example.com',
+      },
+    },
+  },
+```

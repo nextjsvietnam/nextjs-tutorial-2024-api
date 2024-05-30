@@ -23,4 +23,27 @@ export default ({ env }) => ({
       },
     },
   },
+  // email provider
+  email: {
+    config: {
+      provider: "nodemailer",
+      providerOptions: {
+        host: env("SMTP_HOST", "localhost"),
+        port: env("SMTP_PORT", 587),
+        auth: {
+          user: env("SMTP_USER"),
+          pass: env("SMTP_PASS"),
+        },
+        secure: false,
+        tls: {
+          rejectUnauthorized: false,
+        },
+        // ... any custom nodemailer options
+      },
+      settings: {
+        defaultFrom: "sender@mail.localhost",
+        defaultReplyTo: "sender@mail.localhost",
+      },
+    },
+  },
 });
