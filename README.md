@@ -43,6 +43,10 @@ Examples: A product can belong to multiple categories/tags, but only have one au
 
 Examples: A SEO Component
 
+### Dynamic Zones
+
+- The component that includes dynamic data
+
 ### Plugins
 
 ```sh
@@ -57,4 +61,70 @@ docker-compose -p "nextshop" up -d
 docker exec -it nextshop_mysql sh
 mysqldump --user=root --password=123456 nextshop_mysql > "/var/dumps/nextshop_mysql_dump_$(date +%Y%m%d%H%M%S).sql"
 mysql -u root -p 123456 nextshop_mysql < /var/dumps/nextshop_mysql_dump_20240528103452.sql
+```
+
+### Provider
+
+1. Upload File
+
+```sh
+npm install @strapi/provider-upload-cloudinary --save
+```
+
+> ./config/plugins.ts
+
+```ts
+export default ({ env }) => ({
+  // upload provider
+  upload: {
+    config: {
+      provider: "cloudinary",
+      providerOptions: {
+        cloud_name: env("CLOUDINARY_NAME"),
+        api_key: env("CLOUDINARY_KEY"),
+        api_secret: env("CLOUDINARY_SECRET"),
+      },
+      actionOptions: {
+        upload: {},
+        uploadStream: {},
+        delete: {},
+      },
+    },
+  },
+});
+```
+
+> ./config/middlewares.ts
+
+```ts
+export default [
+  // ...
+  // security
+  {
+    name: "strapi::security",
+    config: {
+      contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+          "connect-src": ["'self'", "https:"],
+          "img-src": [
+            "'self'",
+            "data:",
+            "blob:",
+            "market-assets.strapi.io",
+            "res.cloudinary.com",
+          ],
+          "media-src": [
+            "'self'",
+            "data:",
+            "blob:",
+            "market-assets.strapi.io",
+            "res.cloudinary.com",
+          ],
+          upgradeInsecureRequests: null,
+        },
+      },
+    },
+  },
+];
 ```
